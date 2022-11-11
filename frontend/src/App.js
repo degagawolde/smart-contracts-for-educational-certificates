@@ -1,21 +1,23 @@
-import "./App.css";
-import styled from "styled-components";
-import { AccountBox } from "./components/accountBox";
-
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
-
+import Navbar from './components/Navbar';
+import Home from './components/Trainee'
+import Login from './components/Login'
 function App() {
+   const token = sessionStorage.getItem("token");
   return (
-    <AppContainer>
-      <AccountBox />
-    </AppContainer>
+    <div className="App">
+      {(token && token!=="" && token!==undefined?
+      <>
+      <Navbar />
+      <div className='content'>
+         <Home />
+      </div>
+      </>
+      :
+       <div className='content'>
+        <Login />
+        </div>
+        )}
+    </div>
   );
 }
 
