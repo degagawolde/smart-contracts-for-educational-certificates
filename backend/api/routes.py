@@ -21,8 +21,14 @@ def create_token():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     print(email,password)
-    if email != "degagawolde@gmail.com" or password != "test":
+    if email != "degagawolde@gmail.com":
         return jsonify({"msg": "Bad {} or {}".format(email,password)}), 401
 
-    access_token = create_access_token(identity=email)
-    return jsonify(access_token=access_token)
+    elif password=="trainer":
+        access_token = create_access_token(identity=email)
+        return jsonify(access_token=access_token, role="trainer")
+    elif password=="trainee":
+        access_token = create_access_token(identity=email)
+        return jsonify(access_token=access_token, role="trainee")
+    else:
+         return jsonify({"msg": "Bad {} or {}".format(email,password)}), 401

@@ -1,21 +1,30 @@
-import "./App.css";
-import styled from "styled-components";
-import { AccountBox } from "./components/accountBox";
+/*global AlgoSigner*/
+import Trainee from './components/Trainee'
+import Trainer from './components/Trainer'
+import Login from './components/Login'
 
-const AppContainer = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-`;
+// import {Button, Container, Header, Message} from "semantic-ui-react";
 
 function App() {
+   const token = sessionStorage.getItem("token");
+   const role = sessionStorage.getItem("role");
   return (
-    <AppContainer>
-      <AccountBox />
-    </AppContainer>
+    <div className="App">
+      {(token && token!=="" && token!==undefined?
+      <>
+      <div className='content'>
+        {(role === "trainee"?
+         <Trainee />
+         :
+         <Trainer />)}
+      </div>
+      </>
+      :
+       <div className='content'>
+        <Login />
+        </div>
+        )}
+    </div>
   );
 }
 
