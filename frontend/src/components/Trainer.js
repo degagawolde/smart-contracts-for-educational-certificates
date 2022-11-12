@@ -4,14 +4,20 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import AssetActionView from "./AssetActionView";
 import { SubmitButton } from "./common";
 import CreatAsset from "./CreateAsset";
+import algosdk from "algosdk";
+import { TOKEN, ALGOD_SERVER, PORT, INDEXER_SERVER} from "./constants";
 // import MyAlgoWallet from './MyAlgoWallet/MyAlgoWallet'
 
 const Trainer = () => {
-    const handleLogout=()=>{
+  
+  const [account ,setAccount] = useState("")
+  const [assetList ,setAssetList] = useState([])
+  
+  const handleLogout=()=>{
       sessionStorage.removeItem('token');
     }
 
@@ -30,7 +36,6 @@ const Trainer = () => {
       }
     }
 
-  const [account ,setAccount] = useState("")
 
     return (
        <> 
@@ -63,7 +68,7 @@ const Trainer = () => {
       <SubmitButton onClick={handleGetAccount}>connect</SubmitButton>
        <Routes>
           <Route exact path='/create' element={< CreatAsset account={account}/>}></Route>
-          <Route exact path='/list' element={<AssetActionView />}></Route>
+          <Route exact path='/list' element={<AssetActionView assetList={assetList}/>}></Route>
         </Routes>
          </Router>
         </>
