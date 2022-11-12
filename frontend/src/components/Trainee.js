@@ -1,36 +1,46 @@
 import { useState, useEffect } from "react";
-import BlogList from "./BlogList";
+import CourseList from "./CourseList";
 
 const Trainee = () => {
     const [name, setName] = useState("dinka")
-
-    const handleClick=(e)=>{
-        console.log('click',e);
-        setName('degaga');
-    }
-    const handleClickAgaon=(name,e)=>{
-        console.log('click '+name,e.target);
-    }
-    const [blogs, setBlogs] = useState([
+    const [courses, setCourses] = useState([
     { title: 'My new website', body: 'lorem ipsum...', author: 'mario', id: 1 },
     { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2 },
     { title: 'Web dev top tips', body: 'lorem ipsum...', author: 'mario', id: 3 }
   ])
-  const handleDelete = (id)=>{
-    const newBlogs= blogs.filter(blog=>blog.id !== id);
-    setBlogs(newBlogs);
+  const handleOptin = (id)=>{
+    const newCourses= courses.filter(course=>course.id !== id);
+    setCourses(newCourses);
   }
+  const logout=()=>{
+      sessionStorage.removeItem('token');
+    }
   useEffect(()=>{
      console.log('use effect run');
   },[name]);
     return (
-        <div className='home'>
-            <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete} />
-            <BlogList blogs={blogs.filter((blog)=>blog.author === 'mario')} title="Mario's Blogs" handleDelete={handleDelete}/>
-            <p>{name}</p>
-            <button onClick={handleClick}> click me</button>
-            <button onClick={(e)=>handleClickAgaon("degaga",e)}> click me again</button>
+      <>
+        <nav className='navbar'>
+          <h1>Algorand Based Certificate Generation</h1>
+          <div className="links">
+            <a href="./Home" style={{
+              color: "white",
+              backgroundColor: "#f1356d",
+              borderRadius: '8px'
+            }}> Create</a>
+            <a href="/" onClick={logout}
+              style={{
+                color: "white",
+                backgroundColor: "#f1356d",
+                borderRadius: '8px'
+              }}>Signout</a>
+          </div>
+        </nav>
+      <div className='home'>
+          <CourseList courses={courses} title="All Courses" handleOptin={handleOptin} />
+          <CourseList courses={courses.filter((course) => course.author === 'mario')} title="Mario's Blogs" handleOptin={handleOptin} />
         </div>
+        </>
       );
 }
  

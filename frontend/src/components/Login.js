@@ -26,6 +26,7 @@ const Login = () => {
     .then(data=>{
       console.log("coming data",data)
       sessionStorage.setItem("token",data.access_token)
+      sessionStorage.setItem('role',data.role)
     })
     .catch(error=>{
       console.error('there was an error',error);
