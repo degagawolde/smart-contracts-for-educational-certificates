@@ -3,7 +3,7 @@ import React, {useRef, useState} from "react";
 import { FormStyle } from "./Form.style";
 import { TransactionButton } from "./Button.style";
 import { BodyText } from "./MyAlgoWallet/MyAlgoWallet.style";
-import { TOKEN, ALGOD_SERVER, PORT, HEADERS} from "./constants";
+import { TOKEN, ALGOD_SERVER, PORT} from "./constants";
 const algosdk = require("algosdk");
 
 const CreateAsset = ({account}) => {
@@ -14,6 +14,7 @@ const CreateAsset = ({account}) => {
     const totalUnit = useRef()
     const note = useRef()
     const decimals = useRef()
+    const assetURL = useRef()
     const [isLoading, setLoading] = useState(false)
 
     const createAsset = async () =>{
@@ -34,6 +35,7 @@ const CreateAsset = ({account}) => {
                 total: +totalUnit.current,
                 decimals: +decimals.current,
                 note: AlgoSigner.encoding.stringToByteArray(note.current),
+                assetURL: assetURL.current,
                 suggestedParams: txParamsJS
               });
 
@@ -65,6 +67,7 @@ const CreateAsset = ({account}) => {
             <FormStyle onChange = {(e) => totalUnit.current = e.target.value} placeholder="Total units" /><br/>
             <FormStyle onChange = {(e) => decimals.current = e.target.value} placeholder="Decimals" /><br/>
             <FormStyle onChange = {(e) => note.current = e.target.value} placeholder="Enter note" /><br/>
+             <FormStyle onChange = {(e) => assetURL.current = e.target.value} placeholder="Enter asset URL" /><br/>
             <TransactionButton backgroundColor onClick = {createAsset}>{isLoading ? "loading...": "Sign Create Asset"}</TransactionButton>
         </div>
     </div>

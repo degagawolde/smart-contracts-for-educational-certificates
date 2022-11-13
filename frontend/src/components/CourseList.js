@@ -1,3 +1,4 @@
+import {TransactionButton} from './Button.style'
 const CourseList = ({courses,title,handleOptin}) => {
     // const blogs = props.blogs
     // const title = props.title
@@ -6,9 +7,11 @@ const CourseList = ({courses,title,handleOptin}) => {
             <h1>{title}</h1>
             {courses.map(course => (
                 <div className="blog-preview" key={course.id} >
-                    <h2>{ course.title }</h2>
-                    <p>Written by { course.author }</p>
-                    <button onClick={()=>handleOptin(course.id)}>OptiN</button>
+                    <h2>{ course.title +" "+course.status}</h2>
+                    <p>Creator: { course.author }</p>
+                     <p>Asset ID: {course.id}</p>
+                     <a href={course.url}>{course.url}</a>  
+                    {/* <TransactionButton onClick={()=>handleOptin(course.id)}>OptiN</TransactionButton> */}
                 </div>
             ))}
         </div>

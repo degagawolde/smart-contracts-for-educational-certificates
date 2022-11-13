@@ -5,7 +5,8 @@ import { Marginer } from "../marginer";
 const Login = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const token = sessionStorage.getItem("token");
+    const [token,setToken] = useState(sessionStorage.getItem("token"));
+    const [role,setRole] = useState(sessionStorage.getItem("role"));
 
     const handleClick = ()=>{
     const opts = {
@@ -27,6 +28,8 @@ const Login = () => {
       console.log("coming data",data)
       sessionStorage.setItem("token",data.access_token)
       sessionStorage.setItem('role',data.role)
+      setToken(data.access_token);
+      setRole(data.role);
     })
     .catch(error=>{
       console.error('there was an error',error);
@@ -51,7 +54,7 @@ const Login = () => {
             <Marginer direction="vertical" margin="1.6em" />
             <SubmitButton type="submit" onClick={handleClick}>Signin</SubmitButton>
             <Marginer direction="vertical" margin="1em" />
-            {(token && token!=="" && token!==undefined?"you are logged in with token"+token:"you are not logged in")}
+            {/* {(token && token!=="" && token!==undefined?"you are logged in with token":"you are not logged in")} */}
     </BoxContainer>
       );
 }
