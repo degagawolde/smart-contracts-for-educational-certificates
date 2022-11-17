@@ -78,7 +78,13 @@ const Login = () => {
             <SubmitButton type="submit" onClick={handleClick}>Signin</SubmitButton>
             <Marginer direction="vertical" margin="1em" />
             {/* {(token && token!=="" && token!==undefined?"you are logged in with token":"you are not logged in")} */}
-            <p>Use "example@gmail.com" as email and either "trainee" or "trainer" for password. the password trainee is to get the Trainee page and the same is true for the trainer. This is becuase the algorand login is not handled in this project.</p>
+            <div>
+              <p>Use "example@gmail.com" as email and either "trainee" or "trainer" for password.</p> 
+              <p>The password trainee is to get the Trainee page and the same is true for the trainer.</p>
+              <p>This is becuase the algorand login is not handled in this project.</p>
+              <p>Prior to trying this system you should first setup AlgoSigner for your chrome browser.</p>
+            </div>
+          
     </BoxContainer>
       );
 }

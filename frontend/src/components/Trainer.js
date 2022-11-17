@@ -20,7 +20,7 @@ const Trainer = () => {
   
   const handleLogout=()=>{
       sessionStorage.removeItem('token');
-      window.location.reload(false);
+      // window.location.reload(false);
     }
 
   const handleGetAccount = async () => {
@@ -58,12 +58,12 @@ const Trainer = () => {
                     borderRadius:'8px' 
                     }}>View</Link>
             
-                <Link to="/smart-contracts-for-educational-certificates" onClick={handleLogout}
+                <a href="/smart-contracts-for-educational-certificates" onClick={handleLogout}
                 style={{
                     color:"white",
                     backgroundColor:"#f1356d",
                     borderRadius:'8px' 
-                    }}>Signout</Link>
+                    }}>Signout</a>
             </div>
         </nav>
         <p>{account}</p>
