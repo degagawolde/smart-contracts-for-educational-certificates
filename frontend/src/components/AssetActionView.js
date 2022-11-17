@@ -5,9 +5,8 @@ import { TOKEN, ALGOD_SERVER, PORT, INDEXER_SERVER} from "./constants";
 import algosdk from "algosdk";
 import { Button } from "./Button.style";
 import { send } from "process";
-const AssetActionView = () => {
+const AssetActionView = ({account}) => {
     const [courses, setCourses] = useState([])
-    const [account ,setAccount] = useState("")
     const handleTransfer=async (sender,recipient,assetID,note)=>{
       console.log("sender=>"+(typeof sender)+sender.length,sender);
 
@@ -46,9 +45,7 @@ const AssetActionView = () => {
     let algodClient = new algosdk.Algodv2(TOKEN, ALGOD_SERVER, PORT);
     let indexerClient = new algosdk.Indexer(TOKEN, INDEXER_SERVER, PORT);
 
-      const r = await AlgoSigner.accounts({ledger: 'TestNet'});
-      let accountInfo = await algodClient.accountInformation(r[0].address).do();
-      setAccount(r[0].address);
+      let accountInfo = await algodClient.accountInformation(account).do();
 
       console.log(accountInfo);
       let assets=[]
@@ -71,9 +68,9 @@ const AssetActionView = () => {
 
     return (  
         <div className='home'>
+           <Button onClick={handleAssetList}> Get List</Button>
           <AssetList courses={courses} title="Assets" handleTransfer={handleTransfer} />
-          <p>{account}</p>
-            <Button onClick={handleAssetList}> Get List</Button>
+           
         </div>
     );
 }

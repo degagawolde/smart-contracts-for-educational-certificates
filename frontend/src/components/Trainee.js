@@ -10,10 +10,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import DropdownList from "react-widgets/DropdownList";
 import { Button } from "./Button.style";
 const Trainee = () => {
 
     const [account ,setAccount] = useState("")
+    const [accounts ,setAccounts] = useState([])
     const [rcourses, setRCourses] = useState([]);
     const [ncourses, setNCourses] = useState([])
   const handleOptin = (id)=>{
@@ -28,13 +30,16 @@ const Trainee = () => {
 
   const handleGetAccount = async () => {
       try {
-        await AlgoSigner.connect()
-        const r = await AlgoSigner.accounts({
-          ledger: 'TestNet'
-        });
-         console.log(r[1].address);
+        await AlgoSigner.connect();
+        const r = await AlgoSigner.accounts({ledger: 'TestNet'});
+         console.log(r);
         // setAccount(JSON.stringify(r, null));
-        setAccount(r[1].address);
+        let acnt = []
+        for(let j=0;j<r.length;j++){
+          acnt.push(r[j].address);
+        }
+        setAccounts(acnt);
+
       } catch (e) {
         console.error(e);
         return JSON.stringify(e, null, 2);
@@ -45,9 +50,7 @@ const Trainee = () => {
     let algodClient = new algosdk.Algodv2(TOKEN, ALGOD_SERVER, PORT);
     let indexerClient = new algosdk.Indexer(TOKEN, INDEXER_SERVER, PORT);
 
-      const r = await AlgoSigner.accounts({ledger: 'TestNet'});
-      let accountInfo = await algodClient.accountInformation(r[1].address).do();
-      setAccount(r[1].address);
+      let accountInfo = await algodClient.accountInformation(account).do();
 
       let requestedAssets=[]
       let transferedAssets=[]
@@ -91,11 +94,16 @@ const Trainee = () => {
               }}>Signout</a>
           </div>
         </nav>
-         <p>{account}</p>
         <SubmitButton onClick={handleGetAccount}>connect</SubmitButton>
+         <p></p>
+        <DropdownList 
+          data={accounts}
+          // value={value}
+          onChange={value =>setAccount(value)}
+        />
          <Routes>
-            <Route exact path='/opted' element={<CourseList  courses={ncourses} title="New Certificates" handleOptin={handleOptin} />}></Route>
-            <Route exact path='/owned'  element={<CourseList courses={rcourses} title="Requested Certificates" handleOptin={handleOptin}/>}></Route>
+            <Route exact path='/opted' element={<CourseList  courses={ncourses} title="New Certificates" handleOptin={handleOptin} account={account}/>}></Route>
+            <Route exact path='/owned'  element={<CourseList courses={rcourses} title="Requested Certificates" handleOptin={handleOptin} account={account}/>}></Route>
          </Routes>
         </Router>
         <Button onClick={handleAssetList} >get asset</Button>
