@@ -10,7 +10,7 @@ const Login = () => {
     const [token,setToken] = useState(sessionStorage.getItem("token"));
     const [role,setRole] = useState(sessionStorage.getItem("role"));
 
-    const handleClick = ()=>{
+    const handleLogin = ()=>{
     const opts = {
       method:"POST",
       headers:{
@@ -38,6 +38,22 @@ const Login = () => {
       console.error('there was an error',error);
     })
   }
+  const handleClick = ()=>{
+ 
+    if (email==="example@gmail.com" && password=='trainee'){
+     sessionStorage.setItem("token","data.access_token");
+      sessionStorage.setItem('role','trainee');
+       window.location.reload(false);
+    }
+    else if(email==="example@gmail.com" && password=='trainer'){
+      sessionStorage.setItem("token","data.access_token");
+      sessionStorage.setItem('role','trainer');
+       window.location.reload(false); 
+    }
+    else{
+      alert('there has te be some error');
+    }
+  }
 
   useEffect(()=>{
      const token = sessionStorage.getItem("token");
@@ -62,6 +78,7 @@ const Login = () => {
             <SubmitButton type="submit" onClick={handleClick}>Signin</SubmitButton>
             <Marginer direction="vertical" margin="1em" />
             {/* {(token && token!=="" && token!==undefined?"you are logged in with token":"you are not logged in")} */}
+            <p>Use "example@gmail.com" as email and either "trainee" or "trainer" for password. the password trainee is to get the Trainee page and the same is true for the trainer. This is becuase the algorand login is not handled in this project.</p>
     </BoxContainer>
       );
 }
