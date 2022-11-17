@@ -20,6 +20,7 @@ const Trainer = () => {
   
   const handleLogout=()=>{
       sessionStorage.removeItem('token');
+      window.location.reload(false);
     }
 
   const handleGetAccount = async () => {

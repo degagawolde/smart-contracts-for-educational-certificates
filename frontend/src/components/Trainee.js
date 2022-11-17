@@ -20,6 +20,7 @@ const Trainee = () => {
   }
   const logout=()=>{
       sessionStorage.removeItem('token');
+      window.location.reload(false);
     }
 
   const handleGetAccount = async () => {
