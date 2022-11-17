@@ -69,7 +69,7 @@ const AssetActionView = ({account}) => {
     return (  
         <div className='home'>
            <Button onClick={handleAssetList}> Get List</Button>
-          <AssetList courses={courses} title="Assets" handleTransfer={handleTransfer} />
+          <AssetList courses={courses} title="" handleTransfer={handleTransfer} />
            
         </div>
     );

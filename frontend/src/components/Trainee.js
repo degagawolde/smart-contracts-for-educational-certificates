@@ -101,12 +101,12 @@ const Trainee = () => {
           // value={value}
           onChange={value =>setAccount(value)}
         />
+          <Button onClick={handleAssetList} >get asset</Button>
          <Routes>
             <Route exact path='/opted' element={<CourseList  courses={ncourses} title="New Certificates" handleOptin={handleOptin} account={account}/>}></Route>
             <Route exact path='/owned'  element={<CourseList courses={rcourses} title="Requested Certificates" handleOptin={handleOptin} account={account}/>}></Route>
          </Routes>
         </Router>
-        <Button onClick={handleAssetList} >get asset</Button>
         </>
       );
 }
