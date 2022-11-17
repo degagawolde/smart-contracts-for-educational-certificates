@@ -2,6 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://degagawolde.github.io/smart-contracts-for-educational-certificates/frontend",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -19,6 +20,7 @@
     "crypto-es": "^1.2.7",
     "crypto-js": "^4.1.1",
     "fs": "0.0.1-security",
+    "gh-pages": "^4.0.0",
     "os": "^0.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -32,11 +34,14 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+
   "eslintConfig": {
     "extends": [
       "react-app",
