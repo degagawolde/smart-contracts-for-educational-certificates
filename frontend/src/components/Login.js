@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Input,FormContainer,SubmitButton,BoxContainer } from "./common";
 import { Marginer } from "../marginer";
+import Trainee from "./Trainee";
+import Trainer from "./Trainer";
 
 const Login = () => {
     const [email, setEmail] = useState("");
@@ -21,7 +23,8 @@ const Login = () => {
     };
     fetch('http://localhost:7777/api/token',opts)
     .then(resp=>{
-      if(resp.status===200) return resp.json();
+      if(resp.status===200) {
+        return resp.json();}
       else alert('there has te be some error');
     })
     .then(data=>{
@@ -37,7 +40,11 @@ const Login = () => {
   }
 
   useEffect(()=>{
-     console.log('use effect run');
+     const token = sessionStorage.getItem("token");
+     const role = sessionStorage.getItem("role");
+    if (token && token!=="" && token!==undefined){
+      window.location.reload(false);
+    }
   });
     return (
     
