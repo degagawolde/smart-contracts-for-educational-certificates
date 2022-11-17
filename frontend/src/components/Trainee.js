@@ -12,6 +12,7 @@ import {
 } from "react-router-dom";
 import { Button } from "./Button.style";
 const Trainee = () => {
+
     const [account ,setAccount] = useState("")
     const [rcourses, setRCourses] = useState([]);
     const [ncourses, setNCourses] = useState([])
@@ -19,8 +20,10 @@ const Trainee = () => {
     
   }
   const logout=()=>{
+      
       sessionStorage.removeItem('token');
-      window.location.reload(false);
+      // window.location.reload(false);
+      // history.push('/smart-contracts-for-educational-certificates');
     }
 
   const handleGetAccount = async () => {
@@ -80,12 +83,12 @@ const Trainee = () => {
               borderRadius: '8px'
             }}> owned</Link>
 
-            <Link to="/smart-contracts-for-educational-certificates" onClick={logout}
+            <a href="/smart-contracts-for-educational-certificates" onClick={logout}
               style={{
                 color: "white",
                 backgroundColor: "#f1356d",
                 borderRadius: '8px'
-              }}>Signout</Link>
+              }}>Signout</a>
           </div>
         </nav>
          <p>{account}</p>
