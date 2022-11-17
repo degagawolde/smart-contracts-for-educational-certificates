@@ -2,7 +2,7 @@
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://degagawolde.github.io/smart-contracts-for-educational-certificates/frontend",
+  "homepage": "https://degagawolde.github.io/smart-contracts-for-educational-certificates",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
