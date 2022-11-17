@@ -57,7 +57,7 @@ const Trainer = () => {
                     borderRadius:'8px' 
                     }}>View</Link>
             
-                <Link to="/" onClick={handleLogout}
+                <Link to="/smart-contracts-for-educational-certificates" onClick={handleLogout}
                 style={{
                     color:"white",
                     backgroundColor:"#f1356d",

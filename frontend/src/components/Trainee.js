@@ -79,7 +79,7 @@ const Trainee = () => {
               borderRadius: '8px'
             }}> owned</Link>
 
-            <Link to="/" onClick={logout}
+            <Link to="/smart-contracts-for-educational-certificates" onClick={logout}
               style={{
                 color: "white",
                 backgroundColor: "#f1356d",
