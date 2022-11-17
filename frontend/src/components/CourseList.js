@@ -1,5 +1,5 @@
 import {TransactionButton} from './Button.style'
-const CourseList = ({courses,title,handleOptin}) => {
+const CourseList = ({courses,title,handleOptin,account}) => {
     // const blogs = props.blogs
     // const title = props.title
     return (  

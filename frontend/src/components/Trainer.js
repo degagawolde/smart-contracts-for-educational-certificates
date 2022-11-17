@@ -9,12 +9,14 @@ import { useState } from "react";
 import AssetActionView from "./AssetActionView";
 import { SubmitButton } from "./common";
 import CreatAsset from "./CreateAsset";
+import DropdownList from 'react-widgets/DropdownList'
 // import algosdk from "algosdk";
 // import { TOKEN, ALGOD_SERVER, PORT, INDEXER_SERVER} from "./constants";
 // import MyAlgoWallet from './MyAlgoWallet/MyAlgoWallet'
 
 const Trainer = () => {
   
+  const [accounts ,setAccounts] = useState([])
   const [account ,setAccount] = useState("");
   const assetList = [];
   
@@ -29,9 +31,11 @@ const Trainer = () => {
         const r = await AlgoSigner.accounts({
           ledger: 'TestNet'
         });
-         console.log(r[0].address);
-        // setAccount(JSON.stringify(r, null));
-        setAccount(r[0].address);
+         let acnt = []
+        for(let j=0;j<r.length;j++){
+          acnt.push(r[j].address);
+        }
+        setAccounts(acnt);
       } catch (e) {
         console.error(e);
         return JSON.stringify(e, null, 2);
@@ -66,11 +70,16 @@ const Trainer = () => {
                     }}>Signout</a>
             </div>
         </nav>
-        <p>{account}</p>
       <SubmitButton onClick={handleGetAccount}>connect</SubmitButton>
+       <p></p>
+      <DropdownList 
+          data={accounts}
+          // value={value}
+          onChange={value =>setAccount(value)}
+        />
        <Routes>
           <Route exact path='/create' element={< CreatAsset account={account}/>}></Route>
-          <Route exact path='/list' element={<AssetActionView assetList={assetList}/>}></Route>
+          <Route exact path='/list' element={<AssetActionView assetList={assetList} account={account}/>}></Route>
         </Routes>
          </Router>
         </>

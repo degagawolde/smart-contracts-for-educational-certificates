@@ -14,6 +14,7 @@ const AssetList = ({courses,title,handleTransfer}) => {
                     <p>Creator: { course.author }</p>   
                     <p>Asset ID: {course.id}</p>
                      <a href={course.url}>{course.url}</a>  
+                    
                      <Multiselect 
                         data={course.address}
                         // value={value}
