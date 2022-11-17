@@ -8,6 +8,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Link
 } from "react-router-dom";
 import { Button } from "./Button.style";
 const Trainee = () => {
@@ -67,23 +68,23 @@ const Trainee = () => {
         <nav className='navbar'>
           <h1>Algorand Certificate Generation</h1>
           <div className="links">
-            <a href="./opted" style={{
+            <Link to="/opted" style={{
               color: "white",
               backgroundColor: "#f1356d",
               borderRadius: '8px'
-            }}> opted</a>
-            <a href="./owned" style={{
+            }}> opted</Link>
+            <Link to="/owned" style={{
               color: "white",
               backgroundColor: "#f1356d",
               borderRadius: '8px'
-            }}> owned</a>
+            }}> owned</Link>
 
-            <a href="/" onClick={logout}
+            <Link to="/" onClick={logout}
               style={{
                 color: "white",
                 backgroundColor: "#f1356d",
                 borderRadius: '8px'
-              }}>Signout</a>
+              }}>Signout</Link>
           </div>
         </nav>
          <p>{account}</p>

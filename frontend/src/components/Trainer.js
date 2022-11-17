@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  Link
 } from "react-router-dom";
 import { useState } from "react";
 import AssetActionView from "./AssetActionView";
@@ -43,25 +44,25 @@ const Trainer = () => {
         <nav className='navbar'>
             <h1>Algorand Based Certificate Generation</h1>
             <div className="links">
-                <a href="./create"
+                <Link to="/create"
                 style={{
                     color:"white",
                     backgroundColor:"#f1356d",
                     borderRadius:'8px'
-                }}> Create</a>
-                <a href="./list" 
+                }}> Create</Link>
+                <Link to="/list" 
                 style={{
                     color:"white",
                     backgroundColor:"#f1356d",
                     borderRadius:'8px' 
-                    }}>View</a>
+                    }}>View</Link>
             
-                <a href="./" onClick={handleLogout}
+                <Link to="/" onClick={handleLogout}
                 style={{
                     color:"white",
                     backgroundColor:"#f1356d",
                     borderRadius:'8px' 
-                    }}>Signout</a>
+                    }}>Signout</Link>
             </div>
         </nav>
         <p>{account}</p>
