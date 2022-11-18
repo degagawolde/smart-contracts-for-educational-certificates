@@ -60,3 +60,4 @@ In this project, the client is 10 Academy; the client would like to solve the ch
     ```bash
     npm start
     ```
+5. deployed [App](https://degagawolde.github.io/smart-contracts-for-educational-certificates/)
