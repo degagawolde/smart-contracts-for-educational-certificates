@@ -1,5 +1,5 @@
 
-<h1 align="center">10Acadamy's training Certificate Generation, Distribution, and Value Transfer with Algorand NFTs and Smart-Contracts</h1>
+<h1 align="center">Training Certificate Generation, Distribution, and Value Transfer with Algorand NFTs and Smart-Contracts</h1>
 <div>
 <a href="https://github.com/degagawolde/smart-contracts-for-educational-certificates"><img src="https://img.shields.io/github/forks/degagawolde/smart-contracts-for-educational-certificates" alt="Forks Badge"/></a>
 <a "https://github.com/degagawolde/smart-contracts-for-educational-certificates/pulls"><img src="https://img.shields.io/github/issues-pr/degagawolde/smart-contracts-for-educational-certificates" alt="Pull Requests Badge"/></a>
@@ -10,10 +10,10 @@
 </br>
 
 # smart-contracts-for-educational-certificates
-In this project, the client is 10 Academy; the client would like to solve the challenge of ensuring that certificates are available to all trainees in a secure way, and (if possible) that certificate holders can benefit from smart contract actions now and in the future.  At present, certificates are distributed as simple PDF files, without the ability to verify their authenticity nor can 10 Academy undertake smart actions with the trainees/their contracts.
+A client would like to solve the challenge of ensuring that certificates are available to all trainees in a secure way, and (if possible) that certificate holders can benefit from smart contract actions now and in the future.  At present, certificates are distributed as simple PDF files, without the ability to verify their authenticity nor can 10 Academy undertake smart actions with the trainees/their contracts.
 
 # Objective
-10 Academy has partnered with Algorand to use the Algorand Blockchain as the foundational element of the NFT, and this must now be implemented.  In this project I will build end-to-end Web3 dapps on the Algorand Blockchain that will help 10 Academy generate and distribute Non-Fungible Tokens (NFTs) as certificates that will represent the successful completion of a weekly challenge to trainees, and allow trainees with NFTs to interact with a smart contract to perform pre-defined actions.  
+The client has partnered with Algorand to use the Algorand Blockchain as the foundational element of the NFT, and this must now be implemented.  In this project I will build end-to-end Web3 dapps on the Algorand Blockchain that will help the client generate and distribute Non-Fungible Tokens (NFTs) as certificates that will represent the successful completion of a weekly challenge to trainees, and allow trainees with NFTs to interact with a smart contract to perform pre-defined actions.  
 
 
 
@@ -39,11 +39,11 @@ In this project, the client is 10 Academy; the client would like to solve the ch
 
 ## Installation Instructions
 
-1. clone the repo
+1. Clone the repo
    ```bash
    git clone https://github.com/degagawolde/smart-contracts-for-educational-certificates.git
    ```
-2. move into the backend folder and run the following lines in your terminal
+2. Move into the backend folder and run the following lines in your terminal
    ```bash
    cd backend
    python3 -m venv venv
@@ -56,8 +56,8 @@ In this project, the client is 10 Academy; the client would like to solve the ch
     ```bash
     npm install
     ```
-4. run the react app using
+4. Run the react app using
     ```bash
     npm start
     ```
-5. deployed [App](https://degagawolde.github.io/smart-contracts-for-educational-certificates/)
+5. Deployed [App](https://degagawolde.github.io/smart-contracts-for-educational-certificates/)
